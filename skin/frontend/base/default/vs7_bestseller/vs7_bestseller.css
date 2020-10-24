@@ -1,0 +1,189 @@
+.vs7_bestseller-list.owl-carousel .owl-nav [class*='owl-'].owl-prev {
+    left: -25px;
+    background: url('images/prev-arrow-slider.png') no-repeat;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-nav [class*='owl-'].owl-next {
+    right: -25px;
+    background: url('images/next-arrow-slider.png') no-repeat;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-nav [class*='owl-'] {
+    display: inline-block;
+    position: absolute;
+    top: 138px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 15px;
+    height: 29px;
+    cursor: pointer;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-nav {
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-nav .disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-nav.disabled + .owl-dots {
+    position: absolute;
+    margin-top: -40px;
+    width: 1200px;
+    text-align: center;
+}
+
+.vs7_bestseller-list.products-grid .item {
+    width: 100%;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-stage,
+.vs7_bestseller-list.owl-carousel .owl-stage-outer,
+.vs7_bestseller-list.owl-carousel .owl-stage .owl-item,
+.vs7_bestseller-list.owl-carousel .owl-stage .owl-item .item,
+.vs7_bestseller-list.owl-carousel .owl-stage .owl-item .item .product-content {
+    height: 100% !important;
+    margin-bottom: 0;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 1;
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-dots .owl-dot.active span,
+.vs7_bestseller-list.owl-carousel .owl-dots .owl-dot:hover span {
+    background: #000;
+}
+
+.vs7_bestseller-list.owl-carousel .owl-dots .owl-dot span {
+    width: 11px;
+    height: 11px;
+    margin: 5px 7px;
+    background: #c4c4c4;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: opacity .2s ease;
+}
+
+.vs7_bestseller-list.products-grid {
+    height: 300px
+}
+
+.vs7_bestseller-container {
+    clear: both;
+    padding: 0 10px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.vs7_bestseller-content {
+    position: relative;
+    padding: 0 30px 30px 30px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.vs7_bestseller-list img {
+    padding: 0;
+}
+
+.vs7_bestseller-list.products-grid {
+    margin: 0;
+}
+
+.vs7_bestseller-list.products-grid .product-content .image-wrapper {
+    margin: 10px 0;
+}
+
+.vs7_bestseller-list.products-grid .product-content .image-wrapper .grid-buttons .add-to-cart-button .button-shade {
+    width: 81px;
+}
+
+.vs7_bestseller-list.products-grid .product-content .image-wrapper .grid-buttons form {
+    width: 81px;
+}
+
+.vs7_bestseller-list.products-grid .product-content .image-wrapper .grid-buttons .quick-view-button .quick-view {
+    width: 81px;
+}
+
+@media (max-width: 576px) {
+    .vs7_bestseller-list.products-grid {
+        height: 350px
+    }
+}
+
+.vs7_bestseller-tabs ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-left: 1px;
+}
+
+.vs7_bestseller-tabs ul li.active,
+.vs7_bestseller-tabs ul li:hover {
+    background: #fff;
+    position: relative;
+}
+
+.vs7_bestseller-tabs ul li {
+    margin-left: -1px;
+    margin-bottom: -1px;
+}
+
+.vs7_bestseller-tabs ul li.active a,
+.vs7_bestseller-tabs ul li:hover a {
+    background: #fff;
+    color: #000000;
+    border: 1px #000 solid;
+}
+
+.vs7_bestseller-tabs ul li a {
+    color: #cccccc;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 15px 30px 10px;
+    font-family: "Sackers Gothic Std - Heavy";
+    font-size: 18px;
+    font-weight: 400;
+    display: inline-block;
+    border: 1px solid #c4c4c4;
+    white-space: nowrap;
+}
+
+.vs7_bestseller-tabs .vs7_bestseller-seeall {
+    border: none;
+}
+
+.vs7_bestseller-select {
+    display: none;
+}
+
+.vs7_bestseller-select .vs7_bestseller-seeall {
+    display: none;
+}

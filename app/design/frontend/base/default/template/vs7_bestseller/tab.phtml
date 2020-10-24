@@ -1,0 +1,65 @@
+<?php if (($_productCollection = $this->getProductCollection()) && $_productCollection->getSize()): ?>
+    <?php
+    $_helper = $this->helper('catalog/output');
+    ?>
+    <div class="vs7_bestseller-list products-grid owl-carousel " id="block_<?php echo $this->getCategoryId();?>" data-blockname="<?php echo $this->getHashId()?>">
+    <?php foreach ($_productCollection as $_product): ?>
+        <div class="item">
+            <div class="product-content">
+                <div class="image-wrapper">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                        <?php $_imgSize = 210; ?>
+                        <img class="owl-lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    </a>
+                    <div class="grid-buttons">
+                        <?php $buttonTitle = $this->__('Add to Cart'); ?>
+                        <?php if ($_product->isConfigurable()) : ?>
+                            <div class="add-to-cart-button">
+                                <a href="javascript:void(0)" title="<?php echo $buttonTitle ?>" class="button-shade" onclick="visionerPopup.showVisioner({'product_id' : <?php echo $_product->getId(); ?>},'<?php echo Mage::getUrl('catalog/product/visioner'); ?>', this)"><?php echo $buttonTitle ?></a>
+                            </div>
+                        <?php else: ?>
+                            <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form_<?php echo $_product->getId(); ?>"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                                <div class="add-to">
+                                    <div class="qty-wrapper">
+                                        <input type="hidden" name="qty" value="1" />
+                                    </div>
+                                    <div class="add-to-cart-buttons">
+                                        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="submitFormByID('<?php echo $_product->getId() ?>')"><span><span><?php echo $buttonTitle ?></span></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        <?php endif; ?>
+                        <div class="quick-view-button">
+                            <a href="javascript:void(0)" onclick="visionerPopup.showVisioner({'product_id' : <?php echo $_product->getId(); ?>},'<?php echo Mage::getUrl('catalog/product/visioner'); ?>', this)" class="quick-view"><?php echo $this->__('Quick view'); ?></a>
+                        </div>
+                        <div class="clearer"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 class="brand"><?php  echo $_product->getAttributeText('brand'); ?></h3>
+                    <h2 class="product-name">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                    </h2>
+                    <?php
+                    $_nameAfter = $this->getChild('name.after');
+                    if ($_nameAfter) {
+                        $_nameAfterChildren = $_nameAfter->getSortedChildren();
+                        foreach($_nameAfterChildren as $_nameAfterChildName) {
+                            $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                            $_nameAfterChild->setProduct($_product);
+                            echo $_nameAfterChild->toHtml();
+                        }
+                    }
+
+                    echo Mage::helper('core')->formatPrice($_product->getFinalPrice(), true);
+
+                    if($_product->getRatingSummary()) {
+                        echo $this->getReviewsSummaryHtml($_product, 'short');
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    <?php endforeach ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <vs7 translate="label">
+            <label>VS7</label>
+            <sort_order>210</sort_order>
+        </vs7>
+    </tabs>
+    <sections>
+        <vs7_bestseller translate="label">
+            <label>Best Seller</label>
+            <tab>vs7</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <period translate="label">
+                            <label>Period</label>
+                            <comment>Months</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </period>
+                    </fields>
+                </general>
+            </groups>
+        </vs7_bestseller>
+    </sections>
+</config>

@@ -1,0 +1,76 @@
+<?php
+$tabs = $this->getTabs();
+$categories = $this->getCategoriesArray();
+$rootCategoryId = $this->getRootCategoryId();
+if (count($tabs) > 1) :
+?>
+<div class="vs7_bestseller-container" id="<?php echo $this->getUniqid()?>">
+    <div class="vs7_bestseller-tabs">
+        <ul>
+            <?php foreach ($tabs as $tabId => $tabContent): ?>
+            <li>
+                <a href="#block_<?php echo $tabId;?>" data-link="<?php if ($tabId != $rootCategoryId) echo $categories[$tabId]->getUrl();?>" data-text="<?php echo $categories[$tabId]->getName();?>"><?php echo $categories[$tabId]->getName();?></a>
+            </li>
+            <?php endforeach; ?>
+            <li style="margin-left: auto;">
+                <a class="vs7_bestseller-seeall"></a>
+            </li>
+        </ul>
+        <div class="vs7_bestseller-tabs__line"></div>
+    </div>
+    <div class="vs7_bestseller-select">
+        <div class="custom-select">
+            <select>
+                <?php foreach ($tabs as $tabId => $tabContent): ?>
+                    <option value="block_<?php echo $tabId;?>" data-link="<?php if ($tabId != $rootCategoryId) echo $categories[$tabId]->getUrl();?>" data-text="<?php echo $categories[$tabId]->getName();?>"><?php echo $categories[$tabId]->getName();?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+    <div class="vs7_bestseller-content">
+        <?php foreach($tabs as $tabContent) { echo $tabContent; }?>
+    </div>
+</div>
+
+<script>
+(function ($, window, document, undefined) {
+    $(document).ready(function () {
+        var block = $('#<?php echo $this->getUniqid()?>');
+        var seeAll = block.find('.vs7_bestseller-seeall');
+
+        var showBlock = function (e) {
+            e.preventDefault();
+            if ($(this).prop('tagName') == 'A') {
+                var $el = $(this);
+                block.find('.vs7_bestseller-tabs li').removeClass('active');
+                $el.parents('li').addClass('active');
+                var blockId = $el.attr('href');
+            } else if ($(this).prop('tagName') == 'SELECT') {
+                var $el = $(this).find('option:selected');
+                var blockId = '#'+ $el.val();
+            } else {
+                return;
+            }
+
+            block.find('.vs7_bestseller-list').hide();
+            block.find(blockId).show();
+
+            if ($el.data('link') == '' || $el.data('link') == undefined) {
+                seeAll.hide();
+            } else {
+                seeAll.attr('href', $el.data('link'));
+                seeAll.text('<?php echo $this->__('All'); ?> ' + $el.data('text'));
+                seeAll.show();
+            }
+        };
+
+        $('#<?php echo $this->getUniqid()?> .vs7_bestseller-tabs li a:not(.vs7_bestseller-seeall)').off('click.vs7.bestSeller').on('click.vs7.bestSeller', showBlock);
+        $('#<?php echo $this->getUniqid()?> .vs7_bestseller-tabs li a').first().trigger('click.vs7.bestSeller');
+        $('#<?php echo $this->getUniqid()?> .vs7_bestseller-select select').off('change.vs7.bestSeller').on('change.vs7.bestSeller', showBlock);
+        $('#<?php echo $this->getUniqid()?> .vs7_bestseller-select select').val($('#<?php echo $this->getUniqid()?> .vs7_bestseller-select select option:first').val()).trigger('change.vs7.bestSeller');
+    });
+}(jQuery, window, document));
+</script>
+<?php else: ?>
+    <?php foreach($tabs as $tabContent) { echo $tabContent; }?>
+<?php endif; ?>
